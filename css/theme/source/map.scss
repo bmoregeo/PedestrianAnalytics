@@ -1,0 +1,64 @@
+/**
+ * Leaflet Map Dark theme for reveal.js.
+ * Author: Christopher Fricke
+ */
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #111;
+
+$mainFont: 'Open Sans', sans-serif;
+$linkColor: #7fcdbb;
+$linkColorHover: lighten( $linkColor, 20% );
+$headingFont: 'Montserrat', Impact, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: -0.03em;
+$headingTextTransform: none;
+$selectionBackgroundColor: #7fcdbb;
+$mainFontSize: 30px;
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+
+.mapboxgl-ctrl-attrib {
+  background:none;
+  left:0;
+  bottom:5px;
+
+  a{
+    font-size:12px !important;
+  }
+}
+
+.reveal section img{
+  border:0;
+  background:none;
+}
+
+.primaryPicture{
+  width:65%
+}
+.halfPicture{
+  width:45%;
+}
+.quarterPicture{
+  width:32.5%
+}
+
+.thirdPicture{
+  width:20%
+}

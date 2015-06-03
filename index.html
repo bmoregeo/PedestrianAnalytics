@@ -4,21 +4,25 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Pedestrian Routing in OSM</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="Pedestrian Routing in OSM">
+		<meta name="author" content="Christopher Fricke">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
+		<!-- Mapbox CSS -->
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.7.0/mapbox-gl.css' rel='stylesheet' />
+
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/map.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -36,10 +40,11 @@
 
 	<body>
 
-		<div class="reveal">
+		<div class="reveal" id="map">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+
 				<section>
 					<h1>Pedestrian Routing</h1>
 					<h3>State of the Map 2015</h3>
@@ -55,25 +60,25 @@
 				</section>
 
 				<section>
-					<img src="picture/car.jpg" alt="Picture of Car" />
+					<img src="picture/car.jpg" alt="Picture of Car" class="primaryPicture"/>
 					<aside class="notes">How many of you drive a car to work?</aside>
 				</section>
 
 				<section>
-					<img src="picture/bus.jpg" alt="Picture of Train" />
+					<img src="picture/bus.jpg" alt="Picture of Train"  class="primaryPicture"/>
 					<aside class="notes">How about public transportation?</aside>
 				</section>
 
 				<section>
-					<img src="picture/bike.jpg" alt="Picture of Bike" />
+					<img src="picture/bike.jpg" alt="Picture of Bike"  class="primaryPicture" />
 					<aside class="notes">Maybe even a bike?</aside>
 				</section>
 
 				<section>
-					<img src="picture/walk_hallway.jpg" alt="Picture of person walking in hallway" />
-					<img src="picture/walk_path.jpg" alt="Picture of Person walking on path" />
-					<img src="picture/walk_stairs.jpg" alt="Picture of Person walking up stairs" />
-					<img src="picture/wheelchair.jpg" alt="Picture of Person in Wheelchair">
+					<img src="picture/walk_hall.png" alt="Picture of person walking in hallway" class="quarterPicture" />
+					<img src="picture/walk.png" alt="Picture of Person walking on path"  class="quarterPicture"/>
+					<img src="picture/stairs.png" alt="Picture of Person walking up stairs"  class="quarterPicture"/>
+					<img src="picture/wheelchair.png" alt="Picture of Person in Wheelchair"  class="quarterPicture" />
 
 					<aside class="notes">
 						Alright, so now how many of you walk at some point in your journey?
@@ -92,10 +97,10 @@
 				</section>
 
 				<section>
-					<h2>The Competition</h2>
-					<img src="picture/google.jpg" alt="Google Logo" />
-					<img src="picture/esri.jpg" alt="Esri Logo" />
-					<img src="picture/here.jpg" alt="Here Logo" />
+					<h2>Other Services</h2>
+					<img src="picture/Googlemapslogo2014.png" alt="Google Logo" class="thirdPicture"/>
+					<img src="picture/MudLFJqh.png" alt="Esri Logo" class="thirdPicture"/>
+					<img src="picture/here_logo_800x800.jpg" alt="Here Logo" class="thirdPicture"/>
 					<aside class="notes">
 						Google, Esri, and Here all provide pedestrian routing to one degree or
 						another. The public api's are not totally amazing. Most of their
@@ -109,7 +114,9 @@
 				</section>
 
 				<section>
-					<img src="picture/navigator.jpg" alt="GeoMetri Navigator" />
+					<img src="picture/IMG_0456.PNG" alt="GeoMetri Navigator" class="thirdPicture"/>
+					<img src="picture/IMG_0457.PNG" alt="GeoMetri Navigator" class="thirdPicture"  />
+					<img src="picture/IMG_0458.PNG" alt="GeoMetri Navigator" class="thirdPicture" />
 					<aside class="notes">
 						At my 9-5 at GISi Indoors I build indoor pedestrian routing networks for college campuses,
 						airports, and convention centers. I started really hacking around on Open Street Map
@@ -122,7 +129,7 @@
 				</section>
 
 				<section>
-					<h2><a href="http://wiki.openstreetmap.org/wiki/Key:highway">Highway Tag</a> (aka feature types)</h2>
+					<h2><a href="http://wiki.openstreetmap.org/wiki/Key:highway">Highway Tag</a></h2>
 					<ol>
 						<li><b>Footway:</b> Designated pedestrian path or trail</li>
 						<li><b>Path:</b> Generic path or trail for bikes and walking</li>
@@ -145,8 +152,8 @@
 
 				<section>
 					<h2>Drawing</h2>
-					<img src="picture/vertex.png" alt="Paths at vertex" />
-					<img src="picture/bridge.png" alt="Bridges" />
+					<img src="picture/bridge.png" alt="Bridges" class="halfPicture"/>
+					<img src="picture/vertex.png" alt="Paths at vertex"  class="halfPicture"/>
 					<aside class="notes">
 						Paths are only connected if they share a vertex.
 
@@ -199,13 +206,20 @@
 				</section>
 
 				<section>
-					<img src="picture/osm.png" alt="Pedestrian Rout in OSM" />
+					<img src="picture/walking route.png" alt="github page" />
+
 					<aside class="notes">
-						The OSM website is awesome because you'll be able to test your routes a few minutes after saving.
+						It may take up to a day or so, but your routes will show up.
 					</aside>
 				</section>
 
 				<section>
+					<h3><a href="https://github.com/OpenRouting">https://github.com/OpenRouting</a></h3>
+					<img src="picture/openrouting.png" alt="github page" />
+					<img src="picture/openrouting_datamodel.png" alt="github page" />
+
+					<h3>Twitter: <a href="https://twitter.com/bmoregeo">@BmoreGeo</a></h3>
+					<h3>GitHub: <a href="https://github.com/bmoregeo">@BmoreGeo</a></h3>
 					<aside class="notes">
 						I'm slowly working on an ETL process and API for pedestrian routing. Please
 						hit me up at the break if you are interested in pedestrian routing and wanna chat.
@@ -219,6 +233,35 @@
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.7.0/mapbox-gl.js'></script>
+
+		<script>
+			mapboxgl.accessToken = 'pk.eyJ1IjoiYm1vcmVnZW8iLCJhIjoiSk04dld2cyJ9.wMJSAMUtco68PrVuW2i4gA';
+			var tileset = 'bmoregeo.mbnj1dg4';
+			var map = new mapboxgl.Map({
+				container: 'map', // container id
+				style: {
+					"version": 7,
+					"sources": {
+						"simple-tiles": {
+							"tiles": "raster",
+							"url": "mapbox://" + tileset,
+							"tileSize": 256,
+							"type": "raster"
+						}
+					},
+					"layers": [{
+						"id": "simple-tiles",
+						"type": "raster",
+						"source": "simple-tiles",
+						"minzoom": 0,
+						"maxzoom": 22
+					}]
+				},
+				center: [39.2933, -76.6167], // starting position
+				zoom: 15 // starting zoom
+			});
+		</script>
 
 		<script>
 
