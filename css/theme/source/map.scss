@@ -32,7 +32,10 @@ $mainFontSize: 30px;
 @import "../template/theme";
 // ---------------------------------------------
 
-
+section{
+  background:rgba(0, 0, 0, .5);
+  height:80%;
+}
 
 .mapboxgl-ctrl-attrib {
   background:none;

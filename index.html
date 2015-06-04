@@ -51,7 +51,9 @@
 					<p>
 						<small><a href="https://github.com/OpenRouting">Christopher Fricke</a> | <a href="http://twitter.com/bmoregeo">@bmoregeo</a></small>
 						<br>
-						<small>Developer @ <a href="http://gisiindoors.com">GISi Indoors</a></small>
+						<a href="http://gisiindoors.com">
+							<img src="picture/footer_logo.png" alt="GISi Indoors" />
+						</a>
 					</p>
 					<aside class="notes">
 						Good Morning Everyone! I am Christopher from GISi Indoors and
@@ -77,6 +79,7 @@
 				<section>
 					<img src="picture/walk_hall.png" alt="Picture of person walking in hallway" class="quarterPicture" />
 					<img src="picture/walk.png" alt="Picture of Person walking on path"  class="quarterPicture"/>
+					<br />
 					<img src="picture/stairs.png" alt="Picture of Person walking up stairs"  class="quarterPicture"/>
 					<img src="picture/wheelchair.png" alt="Picture of Person in Wheelchair"  class="quarterPicture" />
 
@@ -86,13 +89,16 @@
 				</section>
 
 				<section>
-					<h2>OSM + Pedestrian Routing = <3</h2>
+					<img src="picture/walking-99188_640.png" alt="Walking Logo" class="halfPicture" />
+					<img src="picture/512px-Public-images-osm_logo.svg.png" alt="OSM Logo" class="halfPicture" />
 
 					<aside class="notes">
-						Did you all know you can model pedestrian routing
-						networks in open street map?
+						Pedestrian networks are a vital component of our transportation networks. Unfortunately,
+						as a geo community, we've totally overlooked sidewalks and paths. There hasn't really been any
+						financial or technical incentive to develop these datasets.
 
-						It was added to the default Open Street Map interface earlier in the year.
+						Luckily with the OSM community and the Id editor, this dataset is becoming easy to maintain.
+						Also, there are a bunch of Open Source and Closed Source routing engines that consume this data.
 					</aside>
 				</section>
 
@@ -103,13 +109,11 @@
 					<img src="picture/here_logo_800x800.jpg" alt="Here Logo" class="thirdPicture"/>
 					<aside class="notes">
 						Google, Esri, and Here all provide pedestrian routing to one degree or
-						another. The public api's are not totally amazing. Most of their
-						directions will route you down the side of a road. They are starting
-						to get better about adding footpaths and such.
+						another. They don't provide the level of detail that the OSM
+						community is building. In addition, these services do not include wheel
+						chair accessible pedestrian routing.
 
-						In addition these services also don't take wheelchair accessibility into account. I spent
-						most of college helping my father navigate suburban maryland in a motorized wheelchair. It is
-						a real pain to park in front of a store only to find out that the curb cutout is five stores down.
+
 					</aside>
 				</section>
 
@@ -118,13 +122,12 @@
 					<img src="picture/IMG_0457.PNG" alt="GeoMetri Navigator" class="thirdPicture"  />
 					<img src="picture/IMG_0458.PNG" alt="GeoMetri Navigator" class="thirdPicture" />
 					<aside class="notes">
-						At my 9-5 at GISi Indoors I build indoor pedestrian routing networks for college campuses,
-						airports, and convention centers. I started really hacking around on Open Street Map
-						after State of the Map last year. I created a Github repo to document how to setup
-						pedestrian routing networks in OSM.
+						At my 9-5 with GISi Indoors I work on an indoor pedestrian routing network application
+						for college campuses, airports, and convention centers.
 
-						Here are a few tips and tricks on editing data to support pedestrian routing
-						AND wheelchair accessible routing.
+						I am really excited to share some of the knowledge I've learned over the
+						past few years while working on this product. Here are a few tips and tricks
+						for making your communities pedestrian routable!
 					</aside>
 				</section>
 
@@ -139,9 +142,12 @@
 						<li><b>*:</b> Any other road type with *Sidewalk* Tag</li>
 					</ol>
 					<aside class="notes">
-						The MOST IMPORTANT part is picking what type of feature type to draw.
+						The MOST IMPORTANT tag is determining the highway type. The highway tag is how we
+						define if the feature is a road/path/way.
 
-						Footways are your standard walking path or sidewalk.
+						90% of your pedestrian features are footways. I know this is confusing since another
+						highway type is actually called pedestrian, but bare with me.
+
 						Paths are mixed use paths for bicycles, pedestrians, horses, or whatever.
 						Steps and Elevators are... Steps and Elevators.
 						Pedestrian ways are those streets in historic districts that are closed off to cars.
@@ -155,9 +161,13 @@
 					<img src="picture/bridge.png" alt="Bridges" class="halfPicture"/>
 					<img src="picture/vertex.png" alt="Paths at vertex"  class="halfPicture"/>
 					<aside class="notes">
-						Paths are only connected if they share a vertex.
+						There is only one rule to drawing in paths
+						Everything must connect!
 
-						Paths that are not connected at a vertex are treated like a bridges and tunnels.
+						Lines that don't share a point are treated as disconnected lines. So make sure you
+						have that point there when you want a path to connect to another path.
+
+						Don't put that point there if your feature is a bridge or tunnel.
 					</aside>
 				</section>
 
@@ -176,32 +186,35 @@
 						The access tag defines who can take the route. Is it
 						publicly accessible, not accessible, or awkwardly accessible like that
 						neighborhood trail that is kinda in your neighbor's yard.
+
+						I usually default to Yes.
 					</aside>
 				</section>
 
 				<section>
 					<h2>Wheelchair Accessibility Tags</h2>
 					<ul>
-						<li><a href="http://wiki.openstreetmap.org/wiki/Key:ramp">ramp:</a> The path is a ramp. (Yes|No)</li>
-						<li><a href="http://wiki.openstreetmap.org/wiki/Key:incline">incline:</a> Percent incline of path.</li>
-						<li><a href="http://wiki.openstreetmap.org/wiki/Key:smoothness">smoothness:</a> The surface smoothness of the path. (impassable->excellent)</li>
-						<li><a href="http://wiki.openstreetmap.org/wiki/Key:width">width:</a> The width of the path (meter).</li>
+						<li><b><a href="http://wiki.openstreetmap.org/wiki/Key:ramp">ramp:</a></b> The path is a ramp. (Yes|No)</li>
+						<li><b><a href="http://wiki.openstreetmap.org/wiki/Key:incline">incline:</a></b> Percent incline of path.</li>
+						<li><b><a href="http://wiki.openstreetmap.org/wiki/Key:smoothness">smoothness:</a></b> The surface smoothness of the path.</li>
+						<li><b><a href="http://wiki.openstreetmap.org/wiki/Key:width">width:</a></b> The width of the path (meter).</li>
 						<br>
-						<li><b>wheelchair:</b> The path is wheelchair accessible. (Yes|No)</li>
+						<li><b><a href="http://wiki.openstreetmap.org/wiki/Key:wheelchair">wheelchair:</a></b> The path is wheelchair accessible. (Yes|No)</li>
 					</ul>
 					<aside class="notes">
 						There is a reason that google doesn't have wheelchair
-						accessible directions. The impacts of wrong data are really bad.
+						accessible directions. The impacts of incorrect data have real impacts on people.
 
-						The ADA requirements for accessible routes are incredibly strict. At a minimum, use
-						the first four tags here to make the determination.
+						The ADA requirements for accessible routes are incredibly strict. At a minimum, you can use
+						the first four tags here to make a somewhat educated guess.
 
 						1) Ramps are usually wheelchair accessible
-						2) Except for when the incline is too crazy
-						3) Intermediate and above smoothness are your best bet
+						2) Except for when the incline is too crazy (<5%)
+						3) The path shouldn't be too bumpy
 						4) Finally the width should be at least meter
 
-						If all of these attributes are set then you can go ahead and set wheelchair to Yes
+						If all of these attributes are set then you can probably set wheelchair to Yes But do err
+						on the side of caution
 					</aside>
 				</section>
 
@@ -209,7 +222,9 @@
 					<img src="picture/walking route.png" alt="github page" />
 
 					<aside class="notes">
-						It may take up to a day or so, but your routes will show up.
+						Finally, it may take up to a day or so, but your routes will show up in the OSM website.
+
+						Or you can download the data if you have rolled your own routing engine.
 					</aside>
 				</section>
 
