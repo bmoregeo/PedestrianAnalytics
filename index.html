@@ -46,202 +46,25 @@
 			<div class="slides">
 
 				<section>
-					<h1>Pedestrian Routing</h1>
-					<h3>State of the Map 2015</h3>
+					<h1>Leaflet Plugins</h1>
+					<h3>Level Control</h3>
 					<p>
-						<small><a href="https://github.com/OpenRouting">Christopher Fricke</a> | <a href="http://twitter.com/bmoregeo">@bmoregeo</a></small>
+						<small><a href="https://github.com/BmoreGeo">Christopher Fricke</a> | <a href="http://twitter.com/bmoregeo">@bmoregeo</a></small>
 						<br>
-						<a href="http://gisiindoors.com">
-							<img src="picture/footer_logo.png" alt="GISi Indoors" />
+						<a href="http://gisinc.com">
+							<img src="http://www.esri.com/~/media/Images/Content/Software/arcgis/arcgisengine/graphics/gisi-200px.jpg" alt="GISi" />
 						</a>
 					</p>
 					<aside class="notes">
 						Good Morning Everyone! I am Christopher from GISi Indoors and
-						I'm here to talk to you all about a passion of mine... Pedestrian Routing!
+						I'm here to talk to you all about how easy it is to create Controllers/Plugins in Leaflet
 					</aside>
 				</section>
 
 				<section>
-					<img src="picture/car.jpg" alt="Picture of Car" class="primaryPicture"/>
-					<aside class="notes">How many of you drive a car to work?</aside>
+					<h3>Leaflet Plugin</h3>
+
 				</section>
-
-				<section>
-					<img src="picture/bus.jpg" alt="Picture of Train"  class="primaryPicture"/>
-					<aside class="notes">How about public transportation?</aside>
-				</section>
-
-				<section>
-					<img src="picture/bike.jpg" alt="Picture of Bike"  class="primaryPicture" />
-					<aside class="notes">Maybe even a bike?</aside>
-				</section>
-
-				<section>
-					<img src="picture/walk_hall.png" alt="Picture of person walking in hallway" class="quarterPicture" />
-					<img src="picture/walk.png" alt="Picture of Person walking on path"  class="quarterPicture"/>
-					<br />
-					<img src="picture/stairs.png" alt="Picture of Person walking up stairs"  class="quarterPicture"/>
-					<img src="picture/wheelchair.png" alt="Picture of Person in Wheelchair"  class="quarterPicture" />
-
-					<aside class="notes">
-						Alright, so now how many of you walk at some point in your journey?
-					</aside>
-				</section>
-
-				<section>
-					<img src="picture/walking-99188_640.png" alt="Walking Logo" class="halfPicture" />
-					<img src="picture/512px-Public-images-osm_logo.svg.png" alt="OSM Logo" class="halfPicture" />
-
-					<aside class="notes">
-						Pedestrian networks are a vital component of our transportation networks. Unfortunately,
-						as a geo community, we've totally overlooked sidewalks and paths. There hasn't really been any
-						financial or technical incentive to develop these datasets.
-
-						Luckily with the OSM community and the Id editor, this dataset is becoming easy to maintain.
-						Also, there are a bunch of Open Source and Closed Source routing engines that consume this data.
-					</aside>
-				</section>
-
-				<section>
-					<h2>Other Services</h2>
-					<img src="picture/Googlemapslogo2014.png" alt="Google Logo" class="thirdPicture"/>
-					<img src="picture/MudLFJqh.png" alt="Esri Logo" class="thirdPicture"/>
-					<img src="picture/here_logo_800x800.jpg" alt="Here Logo" class="thirdPicture"/>
-					<aside class="notes">
-						Google, Esri, and Here all provide pedestrian routing to one degree or
-						another. They don't provide the level of detail that the OSM
-						community is building. In addition, these services do not include wheel
-						chair accessible pedestrian routing.
-
-
-					</aside>
-				</section>
-
-				<section>
-					<img src="picture/IMG_0456.PNG" alt="GeoMetri Navigator" class="thirdPicture"/>
-					<img src="picture/IMG_0457.PNG" alt="GeoMetri Navigator" class="thirdPicture"  />
-					<img src="picture/IMG_0458.PNG" alt="GeoMetri Navigator" class="thirdPicture" />
-					<aside class="notes">
-						At my 9-5 with GISi Indoors I work on an indoor pedestrian routing network application
-						for college campuses, airports, and convention centers.
-
-						I am really excited to share some of the knowledge I've learned over the
-						past few years while working on this product. Here are a few tips and tricks
-						for making your communities pedestrian routable!
-					</aside>
-				</section>
-
-				<section>
-					<h2><a href="http://wiki.openstreetmap.org/wiki/Key:highway">Highway Tag</a></h2>
-					<ol>
-						<li><b>Footway:</b> Designated pedestrian path or trail</li>
-						<li><b>Path:</b> Generic path or trail for bikes and walking</li>
-						<li><b>Steps:</b> Flight of Stairs</li>
-						<li><b>Elevator:</b> Elevator</li>
-						<li><b>Pedestrian:</b> Designated road or plaza for pedestrians</li>
-						<li><b>*:</b> Any other road type with *Sidewalk* Tag</li>
-					</ol>
-					<aside class="notes">
-						The MOST IMPORTANT tag is determining the highway type. The highway tag is how we
-						define if the feature is a road/path/way.
-
-						90% of your pedestrian features are footways. I know this is confusing since another
-						highway type is actually called pedestrian, but bare with me.
-
-						Paths are mixed use paths for bicycles, pedestrians, horses, or whatever.
-						Steps and Elevators are... Steps and Elevators.
-						Pedestrian ways are those streets in historic districts that are closed off to cars.
-						You can also just assign a "sidewalk" tag to any other road feature, but you don't
-							get the granularity of a standalone footway or path.
-					</aside>
-				</section>
-
-				<section>
-					<h2>Drawing</h2>
-					<img src="picture/bridge.png" alt="Bridges" class="halfPicture"/>
-					<img src="picture/vertex.png" alt="Paths at vertex"  class="halfPicture"/>
-					<aside class="notes">
-						There is only one rule to drawing in paths
-						Everything must connect!
-
-						Lines that don't share a point are treated as disconnected lines. So make sure you
-						have that point there when you want a path to connect to another path.
-
-						Don't put that point there if your feature is a bridge or tunnel.
-					</aside>
-				</section>
-
-				<section>
-					<h2><a href="https://wiki.openstreetmap.org/wiki/Key:access">Access Tag</a></h2>
-					<ul>
-						<li><b>Yes:</b> Accessible to Anyone</li>
-						<li><b>No:</b> Not Accessible to Anyone</li>
-						<li><b>Private:</b> Private Use Only</li>
-						<li><b>Permissive:</b> Accessible to Anyone, at Owners Discretion (stores)</li>
-						<li><b>Delivery:</b> Only for delivery people</li>
-						<li><b>Discouraged:</b> If you get awkward looks</li>
-					</ul>
-
-					<aside class="notes">
-						The access tag defines who can take the route. Is it
-						publicly accessible, not accessible, or awkwardly accessible like that
-						neighborhood trail that is kinda in your neighbor's yard.
-
-						I usually default to Yes.
-					</aside>
-				</section>
-
-				<section>
-					<h2>Wheelchair Accessibility Tags</h2>
-					<ul>
-						<li><b><a href="http://wiki.openstreetmap.org/wiki/Key:ramp">ramp:</a></b> The path is a ramp. (Yes|No)</li>
-						<li><b><a href="http://wiki.openstreetmap.org/wiki/Key:incline">incline:</a></b> Percent incline of path.</li>
-						<li><b><a href="http://wiki.openstreetmap.org/wiki/Key:smoothness">smoothness:</a></b> The surface smoothness of the path.</li>
-						<li><b><a href="http://wiki.openstreetmap.org/wiki/Key:width">width:</a></b> The width of the path (meter).</li>
-						<br>
-						<li><b><a href="http://wiki.openstreetmap.org/wiki/Key:wheelchair">wheelchair:</a></b> The path is wheelchair accessible. (Yes|No)</li>
-					</ul>
-					<aside class="notes">
-						There is a reason that google doesn't have wheelchair
-						accessible directions. The impacts of incorrect data have real impacts on people.
-
-						The ADA requirements for accessible routes are incredibly strict. At a minimum, you can use
-						the first four tags here to make a somewhat educated guess.
-
-						1) Ramps are usually wheelchair accessible
-						2) Except for when the incline is too crazy (<5%)
-						3) The path shouldn't be too bumpy
-						4) Finally the width should be at least meter
-
-						If all of these attributes are set then you can probably set wheelchair to Yes But do err
-						on the side of caution
-					</aside>
-				</section>
-
-				<section>
-					<img src="picture/walking route.png" alt="github page" />
-
-					<aside class="notes">
-						Finally, it may take up to a day or so, but your routes will show up in the OSM website.
-
-						Or you can download the data if you have rolled your own routing engine.
-					</aside>
-				</section>
-
-				<section>
-					<h3><a href="https://github.com/OpenRouting">https://github.com/OpenRouting</a></h3>
-					<img src="picture/openrouting.png" alt="github page" />
-					<img src="picture/openrouting_datamodel.png" alt="github page" />
-
-					<h3>Twitter: <a href="https://twitter.com/bmoregeo">@BmoreGeo</a></h3>
-					<h3>GitHub: <a href="https://github.com/bmoregeo">@BmoreGeo</a></h3>
-					<aside class="notes">
-						I'm slowly working on an ETL process and API for pedestrian routing. Please
-						hit me up at the break if you are interested in pedestrian routing and wanna chat.
-					</aside>
-				</section>
-
-
 			</div>
 
 		</div>
