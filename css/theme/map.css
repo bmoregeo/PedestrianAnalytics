@@ -289,3 +289,49 @@ section {
 
 .thirdPicture {
   width: 20%; }
+
+.box {
+  width: 160px;
+  height: 150px;
+  padding: 30px 20px 20px 20px !important;
+  color: #FFF;
+  text-align: center;
+  display: inline-block; }
+
+.longbox {
+  margin: 10px !important;
+  padding: 20px !important;
+  width: 780px;
+  display: inline-block; }
+
+.smallbox {
+  width: 100px;
+  margin: 10px !important;
+  padding: 20px !important;
+  display: inline-block; }
+
+.box h1, .longbox h1 {
+  font-size: 25px;
+  padding: 0;
+  margin: 0; }
+
+.box p, .longbox p {
+  font-size: 16px; }
+
+.list-table {
+  width: 70%;
+  border: 0 !important; }
+
+.list-table tr {
+  border-bottom: 0px solid #555 !important; }
+
+.list-table th {
+  width: 20%;
+  font-size: 75%;
+  border: 0 !important;
+  padding: 10px 0; }
+
+.list-table td {
+  font-size: 75%;
+  border: 0 !important;
+  padding: 10px 0 !important; }
