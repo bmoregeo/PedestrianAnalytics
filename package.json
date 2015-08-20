@@ -1,5 +1,5 @@
 {
-  "name": "reveal.js",
+  "name": "bmoregeo_revealjs_template",
   "version": "3.1.0",
   "description": "The HTML Presentation Framework",
   "homepage": "http://lab.hakim.se/reveal-js",
@@ -38,7 +38,10 @@
     "grunt-autoprefixer": "~1.0.1",
     "grunt-zip": "~0.7.0",
     "grunt": "~0.4.0",
-    "node-sass": "~0.9.3"
+    "node-sass": "~0.9.3",
+    "grunt-gh-pages": "~0.10.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-clean": "~0.5.0"
   },
   "licenses": [
     {

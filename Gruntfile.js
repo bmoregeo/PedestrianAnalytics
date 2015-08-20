@@ -2,6 +2,10 @@
 module.exports = function(grunt) {
 	var port = grunt.option('port') || 8080;
 	// Project configuration
+
+	grunt.config('token', grunt.option('token') || '');
+
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		meta: {
@@ -14,7 +18,17 @@ module.exports = function(grunt) {
 				' * Copyright (C) 2015 Hakim El Hattab, http://hakim.se\n' +
 				' */'
 		},
-
+		copy:{
+			build:{
+				expand: true,
+				src: ['index.html', 'css/reveal.css', 'css/theme/map.css',
+					'lib/css/zenburn.css', 'lib/js/head.min.js', 'js/reveal.js', 'css/print/paper.css', 'picture/**/*'],
+				dest: 'build/'
+			}
+		},
+		clean:{
+			build: ['build']
+		},
 		qunit: {
 			files: [ 'test/*.html' ]
 		},
@@ -25,7 +39,7 @@ module.exports = function(grunt) {
 			},
 			build: {
 				src: 'js/reveal.js',
-				dest: 'js/reveal.min.js'
+				dest: 'build/js/reveal.min.js'
 			}
 		},
 
@@ -129,6 +143,13 @@ module.exports = function(grunt) {
 			html: {
 				files: [ 'index.html']
 			}
+		},
+		'gh-pages': {
+			options: {
+				base: 'build',
+				repo: 'https://017831e54aba7b4daaa9d622619cb58646f79115@github.com/bmoregeo/PedestrianAnalytics.git'
+			},
+			src: '**/*'
 		}
 
 	});
@@ -143,6 +164,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
 	grunt.loadNpmTasks( 'grunt-autoprefixer' );
 	grunt.loadNpmTasks( 'grunt-zip' );
+	grunt.loadNpmTasks( 'grunt-gh-pages' );
+	grunt.loadNpmTasks( 'grunt-contrib-copy');
+	grunt.loadNpmTasks( 'grunt-contrib-clean');
 
 	// Default task
 	grunt.registerTask( 'default', [ 'css', 'js' ] );
@@ -161,6 +185,9 @@ module.exports = function(grunt) {
 
 	// Package presentation to archive
 	grunt.registerTask( 'package', [ 'default', 'zip' ] );
+
+	grunt.registerTask( 'build', ['clean:build', 'css', 'copy:build']);
+	grunt.registerTask( 'deploy', ['build', 'default', 'gh-pages']);
 
 	// Serve presentation locally
 	grunt.registerTask( 'serve', [ 'connect', 'watch' ] );

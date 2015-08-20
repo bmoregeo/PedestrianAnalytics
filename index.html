@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Pedestrian Routing in OSM</title>
+		<title>Pedestrian Analytics</title>
 
-		<meta name="description" content="Pedestrian Routing in OSM">
+		<meta name="description" content="Pedestrian Analytics">
 		<meta name="author" content="Christopher Fricke">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -37,7 +37,6 @@
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
 	</head>
-
 	<body>
 
 		<div class="reveal" id="map">
@@ -46,26 +45,163 @@
 			<div class="slides">
 
 				<section>
-					<h1>Leaflet Plugins</h1>
-					<h3>Level Control</h3>
+					<h1>Pedestrian Analytics</h1>
+					<h4>with <a href="http://geometri.io">GeoMetri</a></h4>
 					<p>
 						<small><a href="https://github.com/BmoreGeo">Christopher Fricke</a> | <a href="http://twitter.com/bmoregeo">@bmoregeo</a></small>
 						<br>
 						<a href="http://gisinc.com">
-							<img src="http://www.esri.com/~/media/Images/Content/Software/arcgis/arcgisengine/graphics/gisi-200px.jpg" alt="GISi" />
+							<img src="picture/gisiLogo.svg" width="250px" alt="GISi" style="margin:-40px"/>
 						</a>
 					</p>
 					<aside class="notes">
-						Good Morning Everyone! I am Christopher from GISi Indoors and
-						I'm here to talk to you all about how easy it is to create Controllers/Plugins in Leaflet
+						Good Morning Everyone! I am Christopher from GISi Indoors and I work on a platform called GeoMetri.
 					</aside>
 				</section>
 
 				<section>
-					<h3>Leaflet Plugin</h3>
+					<h3>First Prototype</h3>
+					<img src="picture/initialPrototype.png" alt="Initial Prototype" />
+					<aside class="notes">
+						GeoMetri started as a prototype at the Esri User conference in 2013. We built a bare
+						bones indoor navigation app to direct people around the conference. We also incorporated
+						cutting edge technology for indoor positioning.
+
+						Indoor positioning is like GPS for inside buildings.
+
+						We got a lot of momentum out of the UC and started a small statup within GISi to investigate this further.
+
+					</aside>
+				</section>
+
+				<section>
+					<h3><img src="picture/geometri_logo.png" /></h3>
+					<div class="box" style="background:rgb(121, 60, 127)">
+						<h1>Point</h1>
+						<p>Simple Metrics, Simple Deployment</p>
+					</div>
+					<div class="box" style="background:rgb(241,102,33)">
+						<h1>Enterprise</h1>
+						<p>Zone Based Passive Analytics</p>
+					</div>
+					<div class="box" style="background:rgb(136,196,72)">
+						<h1>Assets</h1>
+						<p>Device & Equipment Monitoring</p>
+					</div>
+					<div class="box" style="background:rgb(158,199,203)">
+						<h1>Navigator</h1>
+						<p>Mobile Positioning & Wayfinding</p>
+					</div>
+					<div class="longbox" style="background:rgb(128, 128, 179);">
+						<h1>Development API</h1>
+					</div>
+					<div class="longbox" style="background:rgb(73, 73,123); margin-top:0 !important;">
+						<h1>Sensor Technologies</h1>
+					</div>
+
+					<aside class="notes">
+						Enter GeoMetri. GeoMetri is a platform for indoor analytics, navigation, and asset tracking.
+
+						Indoor Positioning is still very immature and volatile market. Our aim is to abstract out
+						all of the sensor technologies into a simple positioning API for our clients.
+
+						All of our products use this API for analyzing pedestrian movements, assets, and providing
+						locations for navigation apps.
+					</aside>
 
 				</section>
+
+				<section>
+					<h3>Indoor Positioning</h3>
+					<table class="list-table">
+						<tr>
+							<th>Magnetic</th>
+							<td>Fingerprint of magnetic field variations used to estimate position.</td>
+						</tr>
+						<tr>
+							<th>Wi-Fi</th>
+							<td>Fingerprint or triangulation of devices relative to known AP locations.</td>
+						</tr>
+						<tr>
+							<th>Bluetooth</th>
+							<td>Fingerprint of BLE beacon transmissions or proximity estimation relative to signal strength.</td>
+						</tr>
+						<tr>
+							<th>Dead Reckoning</th>
+							<td>Sensor Fusion - Direction, speed, vector, elevation. Utilizes on-device sensors.</td>
+						</tr>
+						<tr>
+							<th>Light</th>
+							<td>Light modulating at specific intervals to create location waypoints (not visible to human eye).</td>
+
+						</tr>
+						<tr>
+							<th>Sound</th>
+							<td>High frequency audio inaudible to human ear.</td>
+						</tr>
+					</table>
+
+					<aside class="notes">
+						We support a variety of sensor technologies. From Indoor Atlas (magnetic) to Cisco CMX (wifi)
+						to Navizon (wifi) to Solana (bluetooth), we aim to incorporate as many sensor and
+						positioning technologies into our stack. Thus when it comes time for a project, we can provide
+						honest feedback as to which technology will work best in a given scenario.
+					</aside>
+				</section>
+
+				<section>
+					<video preload="auto" autoplay="autoplay" muted="muted" loop="loop" width="auto" height="auto">
+						<source src="picture/bluedot.webm" type="video/mp4">
+					</video>
+
+					<aside class="notes">
+						The end result for our navigation App is a simple Blue Dot. This may not look like much,
+						but it is hours and hours of research and development between ourselves and our partners.
+					</aside>
+				</section>
+
+				<section>
+					<video preload="auto" autoplay="autoplay" muted="muted" loop="loop" width="auto" height="auto">
+						<source src="picture/analytics.webm" type="video/mp4">
+					</video>
+					<aside class="notes">
+						We can also start to analyze pedestrian analytics in our dashboard. This site uses anonymous data
+						collection using wifi to track how people move through a space.
+
+						This information is incredibly useful to our partners. One of our partners uses this technology
+						to determine which car displays increase visits at car shows. They are also able to run more
+						advanced statistics on how long people stay at a car and how often they revisitt the same
+						car throughout the car show.
+
+						In addition, our partners are using this technology in the air ports to figure out the length
+						of the security checkpoint. This information is will soon be fed back into our navigation app
+						to give better directions.
+					</aside>
+				</section>
+
+				<section>
+					<video preload="auto" autoplay="autoplay" muted="muted" loop="loop" width="auto" height="auto">
+						<source src="picture/assets.webm" type="video/mp4">
+					</video>
+					<aside class="notes">
+						We are also working on an asset tracking mechanism for our API. Shrinkage is a big problem
+						with hospitals and warehouses. We are working with our partners to develop cheap tracking
+						sensors that attach to devices or people.
+					</aside>
+				</section>
+
+				<section>
+					<p>
+						<h1>Questions?</h1>
+						<h4>
+							<a href="https://github.com/BmoreGeo">Christopher Fricke</a> | <a href="http://twitter.com/bmoregeo">@bmoregeo</a>
+						</h4>
+						<br>
+						<a href="http://gisinc.com"><img src="picture/gisiLogo.svg" width="250px" alt="GISi" style="margin:-40px"/></a>
+					</p>
+				</section>
 			</div>
+
 
 		</div>
 
